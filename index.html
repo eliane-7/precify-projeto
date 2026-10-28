@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Conheça a Precify, uma proposta de marketplace que conecta clientes e freelancers e utiliza a complexidade das tarefas como referência para sugerir preços de serviços digitais." />
+    <meta name="keywords" content="Precify, marketplace, serviços digitais, freelancers, precificação inteligente, IA" />
+    <meta name="author" content="Precify" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Precify | Marketplace inteligente de serviços digitais" />
+    <meta property="og:description" content="Conheça a Precify, uma proposta de marketplace que conecta clientes e freelancers e utiliza a complexidade das tarefas como referência para sugerir preços de serviços digitais." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <title>Precify | Marketplace inteligente de serviços digitais</title>
+
+    <!-- Favicon (inline SVG) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='32' fill='%23D9A441'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23D9A441'/%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================== -->
+<!-- HEADER / NAVIGATION            -->
+<!-- ============================== -->
+<header id="header" class="header">
+    <div class="container header__inner">
+        <a href="#hero" class="logo" aria-label="Precify - página inicial">
+            <svg class="logo__icon" width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="46" fill="#193F34"/>
+                <circle cx="50" cy="50" r="33" fill="#D9A441"/>
+                <circle cx="50" cy="50" r="22" fill="#193F34"/>
+                <circle cx="50" cy="50" r="10" fill="#D9A441"/>
+            </svg>
+            <span class="logo__text">Precify</span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Navegação principal">
+            <a href="#hero" class="nav__link">Início</a>
+            <a href="#solution" class="nav__link">Como funciona</a>
+            <a href="#profiles" class="nav__link">Para clientes</a>
+            <a href="#profiles" class="nav__link">Para freelancers</a>
+            <a href="#faq" class="nav__link">Dúvidas frequentes</a>
+            <a href="#interest-form" class="btn btn--gold btn--small">Quero conhecer a Precify</a>
+        </nav>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+        </button>
+    </div>
+</header>
+
+<!-- ============================== -->
+<!-- HERO                           -->
+<!-- ============================== -->
+<section id="hero" class="hero">
+    <div class="hero__bg-circle hero__bg-circle--1"></div>
+    <div class="hero__bg-circle hero__bg-circle--2"></div>
+
+    <div class="container hero__inner">
+        <div class="hero__content animate-on-scroll">
+            <span class="hero__tag">UM NOVO JEITO DE CONTRATAR SERVIÇOS DIGITAIS</span>
+            <h1 class="hero__title">Seu próximo projeto começa com o <span class="text-gold">preço certo.</span></h1>
+            <p class="hero__subtitle">Descreva o que você precisa, receba uma sugestão de preço baseada na complexidade da tarefa e encontre profissionais para tirar sua ideia do papel.</p>
+
+            <div class="hero__buttons">
+                <a href="#interest-form" class="btn btn--gold">Quero experimentar a Precify</a>
+                <a href="#solution" class="btn btn--outline">Descobrir como funciona</a>
+            </div>
+
+            <p class="hero__microcopy">Mais clareza para contratar. Mais oportunidades para trabalhar.</p>
+        </div>
+
+        <div class="hero__visual animate-on-scroll">
+            <div class="demo-card">
+                <div class="demo-card__header">
+                    <span class="demo-card__title">Precify — Nova solicitação</span>
+                    <span class="demo-card__dot"></span>
+                </div>
+                <div class="demo-card__body">
+                    <label class="demo-card__label">Descreva seu serviço:</label>
+                    <div class="demo-card__input">Criar uma arte para redes sociais</div>
+
+                    <div class="demo-card__ai-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <span>Análise ilustrativa</span>
+                    </div>
+
+                    <div class="demo-card__analysis">
+                        <div class="demo-card__row">
+                            <span class="demo-card__key">Tarefa</span>
+                            <span class="demo-card__val">Arte para redes sociais</span>
+                        </div>
+                        <div class="demo-card__row">
+                            <span class="demo-card__key">Complexidade</span>
+                            <span class="demo-card__val demo-card__val--accent">Intermediária</span>
+                        </div>
+                    </div>
+
+                    <div class="demo-card__price-box">
+                        <span class="demo-card__price-label">Sugestão de preço</span>
+                        <span class="demo-card__price">R$ 30 – R$ 50</span>
+                    </div>
+                </div>
+                <p class="demo-card__note">Demonstração ilustrativa. Os valores são exemplos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- PROBLEM                        -->
+<!-- ============================== -->
+<section id="problem" class="section section--white">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Quanto cobrar por uma ideia? Quanto pagar por um bom trabalho?</h2>
+            <p class="section__text">Encontrar um profissional é apenas parte do desafio. Muitas vezes, o cliente não sabe quanto deveria pagar, enquanto o freelancer precisa calcular um preço que valorize seu tempo e suas habilidades.</p>
+        </div>
+
+        <div class="problem-cards">
+            <div class="problem-card problem-card--left animate-on-scroll">
+                <div class="problem-card__icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#193F34" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                </div>
+                <h3 class="problem-card__title">Para quem contrata</h3>
+                <ul class="problem-card__list">
+                    <li>Dificuldade para estimar preços.</li>
+                    <li>Insegurança na hora de negociar.</li>
+                    <li>Tempo gasto comparando propostas.</li>
+                </ul>
+            </div>
+
+            <div class="problem-card problem-card--right animate-on-scroll">
+                <div class="problem-card__icon problem-card__icon--dark">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <h3 class="problem-card__title problem-card__title--light">Para quem oferece serviços</h3>
+                <ul class="problem-card__list problem-card__list--light">
+                    <li>Dúvidas na hora de definir o valor.</li>
+                    <li>Risco de cobrar abaixo do necessário.</li>
+                    <li>Dificuldade para encontrar novas oportunidades.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="problem-footer animate-on-scroll">Dois lados, uma mesma dúvida: <strong>qual é o preço justo para esse trabalho?</strong></p>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- SOLUTION                       -->
+<!-- ============================== -->
+<section id="solution" class="section section--light-green">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Menos dúvidas na hora de definir o preço.</h2>
+            <p class="section__text">A Precify foi pensada para tornar a contratação de serviços digitais mais simples, aproximando quem precisa de um serviço de quem sabe realizá-lo.</p>
+        </div>
+
+        <div class="solution-cards">
+            <div class="solution-card animate-on-scroll">
+                <div class="solution-card__num">1</div>
+                <div class="solution-card__icon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#193F34" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 113 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3 class="solution-card__title">Descreva sua tarefa</h3>
+                <p class="solution-card__text">Explique o que você precisa, com os detalhes necessários para entender o trabalho.</p>
+            </div>
+
+            <div class="solution-card solution-card--accent animate-on-scroll">
+                <div class="solution-card__num solution-card__num--gold">2</div>
+                <div class="solution-card__icon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="solution-card__title">Receba uma referência de preço</h3>
+                <p class="solution-card__text">A proposta é utilizar inteligência artificial para analisar a complexidade da tarefa e sugerir uma faixa de valor.</p>
+            </div>
+
+            <div class="solution-card animate-on-scroll">
+                <div class="solution-card__num">3</div>
+                <div class="solution-card__icon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#193F34" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3 class="solution-card__title">Encontre a oportunidade certa</h3>
+                <p class="solution-card__text">Compare profissionais e opções disponíveis para decidir como seguir com seu projeto.</p>
+            </div>
+        </div>
+
+        <div class="solution__cta animate-on-scroll">
+            <a href="#interest-form" class="btn btn--dark">Quero acompanhar o lançamento</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- INTERACTIVE DEMO               -->
+<!-- ============================== -->
+<section id="demo" class="section section--white">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Experimente a experiência proposta</h2>
+            <p class="section__text">Selecione uma categoria e um nível de complexidade para ver uma faixa de preço demonstrativa.</p>
+        </div>
+
+        <div class="demo-interactive animate-on-scroll">
+            <div class="demo-interactive__panel">
+                <div class="demo-step">
+                    <label class="demo-step__label">1. Escolha uma categoria</label>
+                    <div class="demo-options" id="demo-categories">
+                        <button class="demo-option" data-category="design">Design e artes</button>
+                        <button class="demo-option" data-category="video">Edição de vídeo</button>
+                        <button class="demo-option" data-category="writing">Redação</button>
+                        <button class="demo-option" data-category="programming">Programação</button>
+                        <button class="demo-option" data-category="other">Outros serviços</button>
+                    </div>
+                </div>
+
+                <div class="demo-step">
+                    <label class="demo-step__label">2. Escolha uma complexidade</label>
+                    <div class="demo-options" id="demo-complexity">
+                        <button class="demo-option" data-complexity="simple">Simples</button>
+                        <button class="demo-option" data-complexity="intermediate">Intermediária</button>
+                        <button class="demo-option" data-complexity="advanced">Avançada</button>
+                    </div>
+                </div>
+
+                <button class="btn btn--gold btn--full" id="demo-submit" disabled>Ver exemplo de preço</button>
+            </div>
+
+            <div class="demo-interactive__result" id="demo-result">
+                <div class="demo-result__placeholder">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#D9E8D9" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <p>Selecione as opções acima e clique para ver um exemplo de preço.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="demo-note animate-on-scroll">Este exemplo demonstra a experiência proposta. Os preços reais dependerão do escopo, das condições do serviço e da validação do modelo de precificação.</p>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- PRICE TIERS                    -->
+<!-- ============================== -->
+<section id="prices" class="section section--light-gray">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Cada tarefa tem seu nível de complexidade.</h2>
+        </div>
+
+        <div class="price-tiers">
+            <div class="price-tier animate-on-scroll">
+                <span class="price-tier__amount">R$ 20</span>
+                <span class="price-tier__label">Tarefas simples</span>
+                <p class="price-tier__desc">Atividades rápidas e diretas, com baixa complexidade.</p>
+            </div>
+
+            <div class="price-tier animate-on-scroll">
+                <span class="price-tier__amount">R$ 30 – R$ 50</span>
+                <span class="price-tier__label">Tarefas intermediárias</span>
+                <p class="price-tier__desc">Esforço moderado, com habilidade e tempo razoáveis.</p>
+            </div>
+
+            <div class="price-tier price-tier--accent animate-on-scroll">
+                <span class="price-tier__amount price-tier__amount--gold">R$ 75 – R$ 100</span>
+                <span class="price-tier__label">Tarefas elaboradas</span>
+                <p class="price-tier__desc">Projetos que exigem experiência e atenção aos detalhes.</p>
+            </div>
+
+            <div class="price-tier animate-on-scroll">
+                <span class="price-tier__amount">R$ 100+</span>
+                <span class="price-tier__label">Serviços complexos</span>
+                <p class="price-tier__desc">Trabalhos especializados, com alta complexidade técnica.</p>
+            </div>
+        </div>
+
+        <p class="price-note animate-on-scroll">As faixas são exemplos iniciais e poderão mudar conforme os resultados da validação. Não representam valores obrigatórios para todos os serviços.</p>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- TWO PROFILES                   -->
+<!-- ============================== -->
+<section id="profiles" class="section section--white">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Uma plataforma pensada para os dois lados.</h2>
+        </div>
+
+        <div class="profile-cards">
+            <div class="profile-card profile-card--client animate-on-scroll">
+                <div class="profile-card__icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#193F34" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3 class="profile-card__title">Para clientes</h3>
+                <p class="profile-card__text">Encontre profissionais, compare possibilidades e tenha uma referência de preço antes de tomar sua decisão.</p>
+                <a href="#interest-form" class="btn btn--dark" data-profile="client">Tenho um projeto</a>
+            </div>
+
+            <div class="profile-card profile-card--freelancer animate-on-scroll">
+                <div class="profile-card__icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="1.5"><path d="M20 7L9 18l-5-5"/><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                </div>
+                <h3 class="profile-card__title profile-card__title--light">Para freelancers</h3>
+                <p class="profile-card__text profile-card__text--light">Apresente seu trabalho, encontre novas oportunidades e tenha uma referência para avaliar o preço dos serviços que oferece.</p>
+                <a href="#interest-form" class="btn btn--gold" data-profile="freelancer">Quero oferecer serviços</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- BUSINESS MODEL                 -->
+<!-- ============================== -->
+<section id="business-model" class="section section--light-green">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Um modelo simples e transparente.</h2>
+            <p class="section__text">A proposta comercial da Precify prevê uma comissão de 10% sobre os serviços contratados e pagos pela plataforma.</p>
+        </div>
+
+        <div class="business-model animate-on-scroll">
+            <div class="business-model__total">
+                <span class="business-model__label">Valor do serviço</span>
+                <span class="business-model__amount">R$ 50</span>
+            </div>
+
+            <div class="business-model__split">
+                <div class="business-model__card business-model__card--freelancer">
+                    <span class="business-model__card-label">FREELANCER</span>
+                    <span class="business-model__card-amount">R$ 45</span>
+                    <span class="business-model__card-pct">90% do valor</span>
+                </div>
+
+                <div class="business-model__plus">+</div>
+
+                <div class="business-model__card business-model__card--precify">
+                    <span class="business-model__card-label">PRECIFY</span>
+                    <span class="business-model__card-amount">R$ 5</span>
+                    <span class="business-model__card-pct">10% de comissão bruta</span>
+                </div>
+            </div>
+
+            <p class="business-model__note">O exemplo não considera taxas de pagamento, impostos ou outros custos operacionais.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- VALIDATION                     -->
+<!-- ============================== -->
+<section id="validation" class="section section--white">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">A ideia foi bem recebida na nossa pesquisa inicial.</h2>
+            <p class="section__text">Em uma pesquisa exploratória com 54 participantes, buscamos entender a opinião das pessoas sobre uma plataforma que sugere preços conforme a complexidade dos serviços.</p>
+        </div>
+
+        <div class="validation animate-on-scroll">
+            <div class="validation__chart">
+                <div class="bar-chart" id="bar-chart">
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">Excelente ideia</span>
+                        <div class="bar-chart__bar-wrap">
+                            <div class="bar-chart__bar bar-chart__bar--primary" data-value="53.7"></div>
+                            <span class="bar-chart__value">53,7%</span>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">Boa ideia, mas negociar</span>
+                        <div class="bar-chart__bar-wrap">
+                            <div class="bar-chart__bar bar-chart__bar--gold" data-value="38.9"></div>
+                            <span class="bar-chart__value">38,9%</span>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">Indiferente</span>
+                        <div class="bar-chart__bar-wrap">
+                            <div class="bar-chart__bar bar-chart__bar--light" data-value="1.9"></div>
+                            <span class="bar-chart__value">1,9%</span>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">Prefiro definir sozinho</span>
+                        <div class="bar-chart__bar-wrap">
+                            <div class="bar-chart__bar bar-chart__bar--gray" data-value="5.6"></div>
+                            <span class="bar-chart__value">5,6%</span>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">Não confiaria</span>
+                        <div class="bar-chart__bar-wrap">
+                            <div class="bar-chart__bar bar-chart__bar--none" data-value="0"></div>
+                            <span class="bar-chart__value">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="validation__highlight">
+                <span class="validation__tag">AVALIAÇÃO POSITIVA</span>
+                <span class="validation__big-number">92,6%</span>
+                <span class="validation__desc">avaliaram a proposta positivamente</span>
+
+                <div class="validation__detail">
+                    <p><strong>53,7%</strong> consideraram excelente e facilita a contratação.</p>
+                    <p><strong>38,9%</strong> acharam boa, mas querem negociar.</p>
+                    <p><strong>0%</strong> disseram que não confiariam no preço sugerido.</p>
+                </div>
+
+                <div class="validation__disclaimer">
+                    Os resultados representam a opinião dos participantes, não uma garantia de adoção ou de sucesso comercial.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- INTEREST FORM                  -->
+<!-- ============================== -->
+<section id="interest-form" class="section section--dark">
+    <div class="container">
+        <div class="section__header section__header--center animate-on-scroll">
+            <h2 class="section__title section__title--light">Faça parte do começo da Precify.</h2>
+            <p class="section__text section__text--light">Estamos desenvolvendo uma nova maneira de conectar clientes e freelancers. Cadastre seu interesse e ajude a construir uma plataforma melhor.</p>
+        </div>
+
+        <div class="form-wrapper animate-on-scroll">
+            <form id="interest-form-el" class="interest-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nome *</label>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="Seu nome completo" />
+                        <span class="form-error" id="name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-mail *</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="seu@email.com" />
+                        <span class="form-error" id="email-error"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Perfil *</label>
+                        <div class="form-radio-group">
+                            <label class="form-radio">
+                                <input type="radio" name="profile" value="client" required />
+                                <span class="form-radio__custom"></span>
+                                <span>Quero contratar serviços</span>
+                            </label>
+                            <label class="form-radio">
+                                <input type="radio" name="profile" value="freelancer" required />
+                                <span class="form-radio__custom"></span>
+                                <span>Quero oferecer serviços</span>
+                            </label>
+                        </div>
+                        <span class="form-error" id="profile-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category" class="form-label">Categoria de interesse</label>
+                        <select id="category" name="category" class="form-input form-select">
+                            <option value="">Selecione...</option>
+                            <option value="design">Design e artes</option>
+                            <option value="video">Edição de vídeo</option>
+                            <option value="writing">Redação</option>
+                            <option value="programming">Programação</option>
+                            <option value="marketing">Marketing digital</option>
+                            <option value="other">Outros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">O que você gostaria de encontrar na Precify? <span class="form-label--optional">(opcional)</span></label>
+                    <textarea id="message" name="message" class="form-input form-textarea" rows="3" placeholder="Conte-nos sua expectativa..."></textarea>
+                </div>
+
+                <div class="form-consent">
+                    <label class="form-checkbox">
+                        <input type="checkbox" id="consent" name="consent" required />
+                        <span class="form-checkbox__custom"></span>
+                        <span>Concordo com o uso dos meus dados para contato sobre o projeto, conforme a <a href="#" class="form-link">política de privacidade</a>.</span>
+                    </label>
+                    <span class="form-error" id="consent-error"></span>
+                </div>
+
+                <button type="submit" class="btn btn--gold btn--full btn--large" id="form-submit">
+                    <span class="btn__text">Quero entrar na lista de interesse</span>
+                    <span class="btn__loading" hidden>Enviando...</span>
+                </button>
+
+                <p class="form-microcopy">Seus dados serão utilizados para entrar em contato sobre o projeto, conforme a política de privacidade.</p>
+
+                <div class="form-success" id="form-success" hidden>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    <h3>Cadastro recebido!</h3>
+                    <p>Obrigado pelo seu interesse. Entraremos em contato conforme o projeto evoluir.</p>
+                </div>
+            </form>
+
+            <p class="form-backend-note">O formulário ainda precisa ser conectado a um serviço de armazenamento para registrar inscrições. A interface está preparada para integração futura.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- FAQ                            -->
+<!-- ============================== -->
+<section id="faq" class="section section--light-gray">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <h2 class="section__title">Dúvidas frequentes</h2>
+        </div>
+
+        <div class="faq-list animate-on-scroll">
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>O que é a Precify?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>A Precify é uma proposta de marketplace inteligente de serviços digitais que conecta clientes e freelancers. A ideia é facilitar a definição de preços por meio de uma análise da complexidade de cada tarefa.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>Como funciona a sugestão de preço?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>A proposta é utilizar inteligência artificial para analisar as características e a complexidade da tarefa descrita pelo cliente e sugerir uma faixa de preço de referência. Essa funcionalidade está em fase de planejamento e desenvolvimento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>Os preços são fixos?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Não. As faixas de preço são sugestões de referência, não valores obrigatórios. O objetivo é oferecer uma base para a negociação entre cliente e freelancer.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>Posso negociar com o profissional?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Sim. A sugestão de preço é uma referência inicial. Cliente e freelancer podem negociar o valor final conforme o escopo e as condições do serviço.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>A Precify é para clientes ou freelancers?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Para os dois. A plataforma conecta quem precisa contratar serviços digitais e quem deseja oferecê-los, beneficiando ambos os lados.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question" aria-expanded="false">
+                    <span>Como posso participar do lançamento?</span>
+                    <span class="faq-item__icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Você pode se cadastrar na lista de interesse nesta página. Assim que a plataforma estiver pronta para testes, entraremos em contato.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- FINAL CTA + FOOTER             -->
+<!-- ============================== -->
+<section class="final-cta">
+    <div class="container">
+        <div class="final-cta__content animate-on-scroll">
+            <h2 class="final-cta__title">Seu próximo projeto merece começar bem.</h2>
+            <p class="final-cta__text">Descubra uma maneira mais clara de pensar os preços e encontrar oportunidades no mercado de serviços digitais.</p>
+            <a href="#interest-form" class="btn btn--gold btn--large">Quero acompanhar a Precify</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__brand">
+            <a href="#hero" class="logo logo--footer">
+                <svg class="logo__icon" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="46" fill="#D9A441"/>
+                    <circle cx="50" cy="50" r="33" fill="#193F34"/>
+                    <circle cx="50" cy="50" r="22" fill="#D9A441"/>
+                    <circle cx="50" cy="50" r="10" fill="#193F34"/>
+                </svg>
+                <span class="logo__text logo__text--light">Precify</span>
+            </a>
+            <p class="footer__slogan">Sua tarefa. O preço certo.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navegação do rodapé">
+            <a href="#hero" class="footer__link">Início</a>
+            <a href="#solution" class="footer__link">Como funciona</a>
+            <a href="#profiles" class="footer__link">Para clientes</a>
+            <a href="#profiles" class="footer__link">Para freelancers</a>
+            <a href="#faq" class="footer__link">Dúvidas frequentes</a>
+        </nav>
+
+        <div class="footer__info">
+            <a href="#" class="footer__link">Política de privacidade</a>
+            <a href="#" class="footer__link">Contato</a>
+            <p class="footer__status">Precify está em desenvolvimento.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
