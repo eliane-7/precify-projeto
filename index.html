@@ -46,6 +46,8 @@
             <a href="#solution" class="nav__link">Como funciona</a>
             <a href="#profiles" class="nav__link">Para clientes</a>
             <a href="#profiles" class="nav__link">Para freelancers</a>
+            <a href="#precify-score" class="nav__link">Precify Score</a>
+            <a href="#avaliacoes" class="nav__link">Avaliações</a>
             <a href="#faq" class="nav__link">Dúvidas frequentes</a>
             <a href="#interest-form" class="btn btn--gold btn--small">Quero conhecer a Precify</a>
         </nav>
@@ -245,6 +247,115 @@
         </div>
 
         <p class="demo-note animate-on-scroll">Este exemplo demonstra a experiência proposta. Os preços reais dependerão do escopo, das condições do serviço e da validação do modelo de precificação.</p>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- PRECIFY SCORE                  -->
+<!-- ============================== -->
+<section id="precify-score" class="section section--light-green">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <span class="score__eyebrow">FIDELIDADE COM TRANSPARÊNCIA</span>
+            <h2 class="section__title">Conheça o <span class="text-gold">Precify Score.</span></h2>
+            <p class="section__text">Uma proposta de reconhecimento para clientes, baseada em serviços concluídos e pagamentos confirmados. A prévia abaixo está sem dados de conta: nenhuma pontuação ou contratação foi criada.</p>
+        </div>
+
+        <div class="score-dashboard animate-on-scroll" aria-label="Prévia ilustrativa do painel Precify Score, sem dados de conta">
+            <div class="score-dashboard__main">
+                <div class="score-dashboard__heading">
+                    <div>
+                        <span class="score-dashboard__label">SEU NÍVEL</span>
+                        <h3 class="score-dashboard__level"><span class="score-badge score-badge--starter" aria-hidden="true">✦</span> Iniciante</h3>
+                    </div>
+                    <span class="score-dashboard__neutral">Condição neutra</span>
+                </div>
+
+                <div class="score-value" aria-label="Pontuação indisponível sem histórico">
+                    <span class="score-value__number">—</span>
+                    <span class="score-value__caption">pontuação após atividade confirmada</span>
+                </div>
+
+                <div class="score-progress" aria-label="Progresso ainda não calculado">
+                    <div class="score-progress__track"><span class="score-progress__fill"></span></div>
+                    <div class="score-progress__labels"><span>Sem histórico para calcular</span><span>Prata: 30 pontos</span></div>
+                </div>
+
+                <div class="score-stats">
+                    <div class="score-stat"><strong>0</strong><span>serviços concluídos</span></div>
+                    <div class="score-stat"><strong>—</strong><span>histórico de serviços</span></div>
+                </div>
+                <p class="score-dashboard__hint">Conclua seu primeiro serviço para começar a construir seu histórico. A falta de histórico não reduz sua pontuação.</p>
+            </div>
+
+            <aside class="score-dashboard__aside">
+                <span class="score-dashboard__label">BENEFÍCIOS</span>
+                <h3>Vantagens que acompanham sua jornada</h3>
+                <p>Cupons, ofertas e recomendações poderão ser liberados conforme as regras da plataforma.</p>
+                <div class="score-empty-benefit"><span aria-hidden="true">✧</span><div><strong>Nenhum benefício ativo</strong><small>As ofertas aparecerão aqui quando disponíveis.</small></div></div>
+                <div class="score-price-example">
+                    <span>Exemplo de contratação</span>
+                    <div><span>Preço de referência</span><strong>R$ 100,00</strong></div>
+                    <div><span>Benefício Precify</span><strong>—</strong></div>
+                    <div class="score-price-example__total"><span>Total do cliente</span><strong>R$ 100,00</strong></div>
+                    <small>Exemplo ilustrativo. Benefícios são exibidos à parte e não alteram o valor acordado com o profissional.</small>
+                </div>
+            </aside>
+        </div>
+
+        <div class="score-tiers" aria-label="Faixas propostas de credibilidade">
+            <article class="score-tier score-tier--starter"><span class="score-badge score-badge--starter" aria-hidden="true">✦</span><div><h3>Iniciante</h3><p>Sem histórico · condição neutra</p></div></article>
+            <article class="score-tier score-tier--silver"><span class="score-badge score-badge--silver" aria-hidden="true">✦</span><div><h3>Prata</h3><p>30–59 pontos</p></div></article>
+            <article class="score-tier score-tier--gold"><span class="score-badge score-badge--gold" aria-hidden="true">✦</span><div><h3>Ouro</h3><p>60–84 pontos</p></div></article>
+            <article class="score-tier score-tier--diamond"><span class="score-badge score-badge--diamond" aria-hidden="true">✦</span><div><h3>Diamante</h3><p>85–100 pontos</p></div></article>
+        </div>
+        <p class="score-note">Prévia de interface. Pontuações, benefícios, histórico e regras só poderão ser ativados após integração com conta autenticada, API e banco de dados.</p>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- BILATERAL REVIEWS              -->
+<!-- ============================== -->
+<section id="avaliacoes" class="section section--white">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <span class="score__eyebrow">REPUTAÇÃO COM CONTEXTO</span>
+            <h2 class="section__title">Confiança construída a cada projeto.</h2>
+            <p class="section__text">Após uma contratação concluída, cliente e freelancer poderão avaliar a experiência. As avaliações ficam vinculadas ao serviço e ajudam outras pessoas a contratar com mais clareza.</p>
+        </div>
+
+        <div class="reviews-preview animate-on-scroll" aria-label="Prévia ilustrativa das avaliações, sem avaliações registradas">
+            <article class="reputation-card">
+                <div class="reputation-card__top">
+                    <span class="reputation-avatar reputation-avatar--client" aria-hidden="true">C</span>
+                    <div><span class="reputation-card__type">PERFIL DO CLIENTE</span><h3>Reputação do cliente</h3></div>
+                </div>
+                <div class="reputation-score"><strong>—</strong><span class="reputation-stars" aria-label="Sem avaliações">☆☆☆☆☆</span><small>Sem avaliações registradas</small></div>
+                <p>A média será exibida quando houver avaliações válidas de serviços concluídos.</p>
+                <div class="review-criteria"><span>Comunicação</span><span>Respeito</span><span>Organização</span><span>Compromisso</span><span>Pagamento</span></div>
+                <div class="reputation-card__foot">Avaliado por freelancers após a conclusão do serviço</div>
+            </article>
+
+            <article class="reputation-card">
+                <div class="reputation-card__top">
+                    <span class="reputation-avatar reputation-avatar--freelancer" aria-hidden="true">F</span>
+                    <div><span class="reputation-card__type">PERFIL DO FREELANCER</span><h3>Reputação profissional</h3></div>
+                </div>
+                <div class="reputation-score"><strong>—</strong><span class="reputation-stars" aria-label="Sem avaliações">☆☆☆☆☆</span><small>Sem avaliações registradas</small></div>
+                <p>A média será exibida quando houver avaliações válidas de serviços concluídos.</p>
+                <div class="review-criteria"><span>Qualidade do trabalho</span><span>Cumprimento do prazo</span><span>Comunicação</span><span>Profissionalismo</span><span>Custo-benefício</span></div>
+                <div class="reputation-card__foot">Avaliado por clientes após a conclusão do serviço</div>
+            </article>
+        </div>
+
+        <div class="reviews-rules animate-on-scroll">
+            <div class="reviews-rules__intro"><span class="score-dashboard__label">COMO AVALIAÇÕES CONFIÁVEIS FUNCIONAM</span><h3>Uma contratação real. Uma avaliação por participante.</h3><p>A reputação permanece separada dos benefícios de fidelidade e considera o histórico de forma gradual. Novos perfis começam sem média, sem penalidade.</p></div>
+            <div class="review-rule"><span>01</span><div><strong>Elegibilidade</strong><p>Só contratações concluídas podem receber avaliações.</p></div></div>
+            <div class="review-rule"><span>02</span><div><strong>Vínculo e limite</strong><p>Cada avaliação pertence à contratação e cada parte avalia uma vez.</p></div></div>
+            <div class="review-rule"><span>03</span><div><strong>Denúncia e contestação</strong><p>Conteúdo abusivo pode ser denunciado ou contestado para revisão administrativa.</p></div></div>
+        </div>
+
+        <p class="score-note">Prévia de interface sem avaliações, comentários ou perfis fictícios. A publicação, denúncia e moderação exigem autenticação e validação da contratação no backend.</p>
     </div>
 </section>
 
