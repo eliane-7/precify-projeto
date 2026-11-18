@@ -306,28 +306,156 @@ input, textarea {
 }
 
 /* ==============================
-   SEARCH BAR
+   DEMO HINT (aviso de demo interativa)
    ============================== */
-.search-bar {
+.demo-hint {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 6px;
+    background: #f6e8c7;
+    color: #79530c;
+    padding: 8px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.demo-hint svg {
+    flex-shrink: 0;
+}
+
+/* ==============================
+   QUICK SERVICES (cards pré-configurados)
+   ============================== */
+.quick-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.quick-service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
     background: var(--color-gray);
+    border: 2px solid transparent;
     border-radius: var(--radius-md);
-    padding: 10px 14px;
-    margin-bottom: 20px;
-    color: var(--color-text-light);
+    padding: 14px;
+    text-align: left;
+    transition: all var(--transition-fast);
+    cursor: pointer;
 }
 
-.search-bar input {
-    flex: 1;
-    background: transparent;
+.quick-service-card:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+.quick-service-card:active {
+    transform: scale(0.97);
+}
+
+.quick-service-card.selected {
+    border-color: var(--color-gold);
+    background: #fdf6e8;
+}
+
+.quick-service-card__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.quick-service-card.selected .quick-service-card__icon {
+    background: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.quick-service-card__label {
     font-size: 14px;
-    color: var(--color-text);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
 }
 
-.search-bar input::placeholder {
-    color: var(--color-text-light);
+.quick-service-card__desc {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* ==============================
+   PRICE SUGGEST RESULT (análise IA por card)
+   ============================== */
+.price-suggest-result {
+    padding: 16px;
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.price-suggest-result.pop {
+    animation: priceReveal 0.4s ease;
+}
+
+@keyframes priceReveal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.price-suggest-result__ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 6px;
+}
+
+.price-suggest-result__task {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 2px;
+}
+
+.price-suggest-result__price {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-gold);
+    margin-bottom: 4px;
+}
+
+.price-suggest-result__complexity {
+    font-size: 12px;
+    color: var(--color-secondary);
+    margin-bottom: 12px;
+}
+
+.price-suggest-result__cta {
+    width: 100%;
+    padding: 10px;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    transition: background var(--transition-fast);
+}
+
+.price-suggest-result__cta:hover {
+    background: var(--color-gold-light);
 }
 
 /* ==============================
@@ -379,87 +507,6 @@ input, textarea {
 
 .category-chip:hover:not(.active) {
     border-color: var(--color-secondary);
-}
-
-/* ==============================
-   PRICE SUGGEST CARD
-   ============================== */
-.price-suggest-card {
-    background: var(--color-gray);
-    border-radius: var(--radius-lg);
-    padding: 16px;
-    margin-bottom: 20px;
-}
-
-.price-suggest-card__input label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 6px;
-}
-
-.price-suggest-card__input textarea {
-    width: 100%;
-    background: var(--color-white);
-    border-radius: var(--radius-sm);
-    padding: 10px 12px;
-    font-size: 14px;
-    color: var(--color-text);
-    resize: none;
-    margin-bottom: 10px;
-    border: 1px solid var(--color-border);
-}
-
-.btn-price-suggest {
-    width: 100%;
-    padding: 10px;
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-weight: 600;
-    transition: background var(--transition-fast);
-}
-
-.btn-price-suggest:hover {
-    background: var(--color-primary-light);
-}
-
-.price-suggest-result {
-    margin-top: 12px;
-    padding: 14px;
-    background: var(--color-primary);
-    border-radius: var(--radius-md);
-    text-align: center;
-    animation: priceReveal 0.4s ease;
-}
-
-@keyframes priceReveal {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.price-suggest-result__ai {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--color-gold);
-    margin-bottom: 6px;
-}
-
-.price-suggest-result__price {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--color-gold);
-    margin-bottom: 4px;
-}
-
-.price-suggest-result__complexity {
-    font-size: 12px;
-    color: var(--color-secondary);
 }
 
 /* ==============================
@@ -1194,6 +1241,11 @@ input, textarea {
     animation: fadeIn 0.2s ease;
 }
 
+/* Garante que o atributo hidden funcione mesmo com display:flex acima */
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
 @media (min-width: 480px) {
     .modal-overlay {
         align-items: center;
@@ -1357,10 +1409,52 @@ input, textarea {
 .detail-service {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 14px;
+    gap: 10px;
+    padding: 12px 14px;
     background: var(--color-gray);
+    border: 2px solid transparent;
     border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.detail-service:hover {
+    border-color: var(--color-secondary);
+}
+
+.detail-service:active {
+    transform: scale(0.98);
+}
+
+.detail-service--selected {
+    border-color: var(--color-gold);
+    background: #fdf6e8;
+}
+
+.detail-service__check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    transition: all var(--transition-fast);
+}
+
+.detail-service--selected .detail-service__check {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.detail-service__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .detail-service__name {
@@ -1369,10 +1463,16 @@ input, textarea {
     color: var(--color-text);
 }
 
+.detail-service__complexity {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
 .detail-service__price {
     font-size: 14px;
     font-weight: 800;
     color: var(--color-primary);
+    flex-shrink: 0;
 }
 
 .detail-reviews {
@@ -1814,6 +1914,120 @@ input, textarea {
 @keyframes toastIn {
     from { opacity: 0; transform: translateX(-50%) translateY(20px); }
     to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ==============================
+   ACTIVITY CARDS (interativos)
+   ============================== */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.activity-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.activity-card:active {
+    transform: scale(0.98);
+}
+
+.activity-card__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-card__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-card__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+}
+
+.activity-card__desc {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activity-card__meta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.activity-card__time {
+    font-size: 11px;
+    color: var(--color-text-light);
+}
+
+.activity-card__meta svg {
+    color: var(--color-text-light);
+}
+
+/* ==============================
+   CHAT QUICK REPLIES (cards)
+   ============================== */
+.chat-quick-replies {
+    display: flex;
+    gap: 8px;
+    padding: 10px 16px 0;
+    overflow-x: auto;
+    background: var(--color-white);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.chat-quick-replies::-webkit-scrollbar {
+    display: none;
+}
+
+.quick-reply-chip {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    background: #fdf6e8;
+    border: 1.5px solid var(--color-gold);
+    color: #79530c;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.quick-reply-chip:hover {
+    background: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.quick-reply-chip:active {
+    transform: scale(0.95);
 }
 
 /* ==============================

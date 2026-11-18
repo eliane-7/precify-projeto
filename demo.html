@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#193F34" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="description" content="Demonstração do app Precify — fluxo completo de contratação e prestação de serviços digitais." />
+    <meta name="description" content="Demonstração interativa do app Precify — experimente os modos Contratante e Contratado tocando nos cards." />
     <title>Precify App — Demonstração</title>
 
     <link rel="manifest" href="manifest.json" />
@@ -73,10 +73,15 @@
             <!-- HOME / EXPLORAR -->
             <div class="screen screen--home active" data-screen="home">
                 <div class="screen__scroll">
+                    <div class="demo-hint">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        <span>Demo interativa — toque nos cards para explorar</span>
+                    </div>
+
                     <div class="home-hero">
                         <div class="home-hero__greeting">
-                            <h2>Ola, Eliane!</h2>
-                            <p>O que voce precisa hoje?</p>
+                            <h2>Olá, Eliane!</h2>
+                            <p>O que você precisa hoje?</p>
                         </div>
                         <div class="home-hero__balance">
                             <span class="balance-label">Carteira</span>
@@ -84,48 +89,42 @@
                         </div>
                     </div>
 
-                    <div class="search-bar">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                        <input type="text" placeholder="Buscar servicos ou profissionais..." id="client-search" />
+                    <!-- Serviços populares: cards interativos pré-configurados -->
+                    <div class="section-label">Serviços populares</div>
+                    <div class="quick-services-grid" id="quick-services"></div>
+
+                    <!-- Resultado da análise de preço (aparece ao tocar num serviço) -->
+                    <div class="price-suggest-result" id="price-suggest-result" hidden>
+                        <div class="price-suggest-result__ai">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <span>Análise IA</span>
+                        </div>
+                        <div class="price-suggest-result__task" id="suggest-task">Arte para Instagram</div>
+                        <div class="price-suggest-result__price" id="suggest-price-range">R$ 30 - R$ 50</div>
+                        <div class="price-suggest-result__complexity" id="suggest-complexity">Complexidade: Intermediária</div>
+                        <button class="price-suggest-result__cta" id="suggest-cta">Ver profissionais dessa área</button>
                     </div>
 
                     <div class="section-label">Categorias</div>
                     <div class="categories-scroll" id="client-categories">
                         <button class="category-chip active" data-cat="all">Todos</button>
                         <button class="category-chip" data-cat="design">Design</button>
-                        <button class="category-chip" data-cat="video">Video</button>
-                        <button class="category-chip" data-cat="writing">Redacao</button>
-                        <button class="category-chip" data-cat="programming">Programacao</button>
+                        <button class="category-chip" data-cat="video">Vídeo</button>
+                        <button class="category-chip" data-cat="writing">Redação</button>
+                        <button class="category-chip" data-cat="programming">Programação</button>
                         <button class="category-chip" data-cat="marketing">Marketing</button>
                     </div>
 
-                    <div class="section-label">Sugestao de preco</div>
-                    <div class="price-suggest-card">
-                        <div class="price-suggest-card__input">
-                            <label>Descreva seu servico</label>
-                            <textarea id="price-suggest-input" placeholder="Ex: Criar uma arte para Instagram" rows="2"></textarea>
-                        </div>
-                        <button class="btn-price-suggest" id="btn-price-suggest">Analisar preco</button>
-                        <div class="price-suggest-result" id="price-suggest-result" hidden>
-                            <div class="price-suggest-result__ai">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                <span>Analise IA</span>
-                            </div>
-                            <div class="price-suggest-result__price" id="suggest-price-range">R$ 30 - R$ 50</div>
-                            <div class="price-suggest-result__complexity" id="suggest-complexity">Complexidade: Intermediaria</div>
-                        </div>
-                    </div>
-
-                    <div class="section-label">Profissionais disponiveis</div>
+                    <div class="section-label">Profissionais disponíveis</div>
                     <div class="freelancer-list" id="freelancer-list"></div>
                 </div>
             </div>
 
-            <!-- SOLICITACOES -->
+            <!-- SOLICITAÇÕES -->
             <div class="screen screen--requests" data-screen="requests">
                 <div class="screen__scroll">
                     <div class="screen__title">
-                        <h2>Minhas solicitacoes</h2>
+                        <h2>Minhas solicitações</h2>
                     </div>
                     <div class="requests-list" id="client-requests-list"></div>
                 </div>
@@ -156,11 +155,11 @@
                     <div class="profile-stats">
                         <div class="profile-stat">
                             <strong>3</strong>
-                            <span>Servicos contratados</span>
+                            <span>Serviços contratados</span>
                         </div>
                         <div class="profile-stat">
                             <strong>4,8</strong>
-                            <span>Avaliacao</span>
+                            <span>Avaliação</span>
                         </div>
                         <div class="profile-stat">
                             <strong>R$ 120</strong>
@@ -170,11 +169,11 @@
                     <div class="profile-menu">
                         <div class="profile-menu__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                            <span>Meu historico</span>
+                            <span>Meu histórico</span>
                         </div>
                         <div class="profile-menu__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                            <span>Configuracoes</span>
+                            <span>Configurações</span>
                         </div>
                         <div class="profile-menu__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -198,10 +197,15 @@
             <!-- OPORTUNIDADES -->
             <div class="screen screen--opportunities active" data-screen="opportunities">
                 <div class="screen__scroll">
+                    <div class="demo-hint">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        <span>Toque em uma oportunidade para aceitar</span>
+                    </div>
+
                     <div class="home-hero">
                         <div class="home-hero__greeting">
-                            <h2>Ola, Aline!</h2>
-                            <p>Novas oportunidades para voce</p>
+                            <h2>Olá, Aline!</h2>
+                            <p>Novas oportunidades para você</p>
                         </div>
                         <div class="home-hero__balance">
                             <span class="balance-label">Ganhos</span>
@@ -212,7 +216,7 @@
                     <div class="stats-row">
                         <div class="mini-stat">
                             <strong>5</strong>
-                            <span>Disponiveis</span>
+                            <span>Disponíveis</span>
                         </div>
                         <div class="mini-stat">
                             <strong>2</strong>
@@ -220,7 +224,7 @@
                         </div>
                         <div class="mini-stat">
                             <strong>8</strong>
-                            <span>Concluidos</span>
+                            <span>Concluídos</span>
                         </div>
                     </div>
 
@@ -229,15 +233,15 @@
                 </div>
             </div>
 
-            <!-- MEUS SERVICOS -->
+            <!-- MEUS SERVIÇOS -->
             <div class="screen screen--my-services" data-screen="my-services">
                 <div class="screen__scroll">
                     <div class="screen__title">
-                        <h2>Meus servicos</h2>
+                        <h2>Meus serviços</h2>
                     </div>
                     <div class="services-tabs">
                         <button class="services-tab active" data-status="active">Em andamento</button>
-                        <button class="services-tab" data-status="completed">Concluidos</button>
+                        <button class="services-tab" data-status="completed">Concluídos</button>
                     </div>
                     <div class="my-services-list" id="freelancer-services-list"></div>
                 </div>
@@ -269,11 +273,11 @@
                     <div class="profile-stats">
                         <div class="profile-stat">
                             <strong>8</strong>
-                            <span>Servicos concluidos</span>
+                            <span>Serviços concluídos</span>
                         </div>
                         <div class="profile-stat">
                             <strong>4,9</strong>
-                            <span>Avaliacao</span>
+                            <span>Avaliação</span>
                         </div>
                         <div class="profile-stat">
                             <strong>R$ 340</strong>
@@ -283,10 +287,10 @@
                     <div class="profile-skills">
                         <div class="section-label">Habilidades</div>
                         <div class="skills-tags">
-                            <span class="skill-tag">Design grafico</span>
+                            <span class="skill-tag">Design gráfico</span>
                             <span class="skill-tag">Artes para redes sociais</span>
-                            <span class="skill-tag">Redacao publicitaria</span>
-                            <span class="skill-tag">Edicao de imagem</span>
+                            <span class="skill-tag">Redação publicitária</span>
+                            <span class="skill-tag">Edição de imagem</span>
                             <span class="skill-tag">Branding</span>
                         </div>
                     </div>
@@ -297,7 +301,7 @@
                         </div>
                         <div class="profile-menu__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                            <span>Configuracoes</span>
+                            <span>Configurações</span>
                         </div>
                         <div class="profile-menu__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -327,7 +331,7 @@
             </button>
             <button class="nav-item" data-screen="requests">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-                <span>Solicitacoes</span>
+                <span>Solicitações</span>
             </button>
             <button class="nav-item" data-screen="messages">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -346,7 +350,7 @@
             </button>
             <button class="nav-item" data-screen="my-services">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                <span>Meus servicos</span>
+                <span>Meus serviços</span>
             </button>
             <button class="nav-item" data-screen="messages-freelancer">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -367,7 +371,7 @@
 <div class="modal-overlay" id="modal-freelancer" hidden>
     <div class="modal">
         <div class="modal__header">
-            <button class="modal__close" id="modal-freelancer-close">&times;</button>
+            <button class="modal__close" data-close="modal-freelancer">&times;</button>
         </div>
         <div class="modal__body" id="modal-freelancer-body"></div>
     </div>
@@ -379,21 +383,9 @@
 <div class="modal-overlay" id="modal-opportunity" hidden>
     <div class="modal">
         <div class="modal__header">
-            <button class="modal__close" id="modal-opportunity-close">&times;</button>
+            <button class="modal__close" data-close="modal-opportunity">&times;</button>
         </div>
         <div class="modal__body" id="modal-opportunity-body"></div>
-    </div>
-</div>
-
-<!-- ============================== -->
-<!-- MODAL: Detail card interativo  -->
-<!-- ============================== -->
-<div class="modal-overlay" id="modal-detail" hidden>
-    <div class="modal">
-        <div class="modal__header">
-            <button class="modal__close" id="modal-detail-close">&times;</button>
-        </div>
-        <div class="modal__body" id="modal-detail-body"></div>
     </div>
 </div>
 
@@ -403,9 +395,40 @@
 <div class="modal-overlay" id="modal-hire" hidden>
     <div class="modal">
         <div class="modal__header">
-            <button class="modal__close" id="modal-hire-close">&times;</button>
+            <button class="modal__close" data-close="modal-hire">&times;</button>
         </div>
         <div class="modal__body" id="modal-hire-body"></div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- MODAL: Chat (respostas rápidas por cards) -->
+<!-- ============================== -->
+<div class="modal-overlay modal-overlay--chat" id="modal-chat" hidden>
+    <div class="modal modal--chat">
+        <div class="chat-header">
+            <button class="chat-header__back" id="chat-close" aria-label="Fechar chat">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="chat-header__avatar" id="chat-avatar">A</div>
+            <div class="chat-header__info">
+                <strong id="chat-name">Nome</strong>
+                <span>Online agora</span>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-quick-replies" id="chat-quick-replies">
+            <button class="quick-reply-chip" data-reply="Combinado!">Combinado!</button>
+            <button class="quick-reply-chip" data-reply="Obrigado! 😊">Obrigado! 😊</button>
+            <button class="quick-reply-chip" data-reply="Pode enviar 🚀">Pode enviar 🚀</button>
+            <button class="quick-reply-chip" data-reply="Quando fica pronto?">Quando fica pronto?</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Mensagem (opcional na demo)..." />
+            <button class="chat-send" id="chat-send" aria-label="Enviar mensagem">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+        </div>
     </div>
 </div>
 

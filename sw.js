@@ -3,7 +3,7 @@
    PWA offline caching strategy
    ============================== */
 
-const CACHE_VERSION = 'precify-v1';
+const CACHE_VERSION = 'precify-v2';
 const STATIC_CACHE = `precify-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `precify-runtime-${CACHE_VERSION}`;
 
