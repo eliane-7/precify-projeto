@@ -42,6 +42,19 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
 }
 
 body {
@@ -80,6 +93,18 @@ img {
     padding: 0 24px;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+}
+
 /* --- Typography --- */
 .text-gold {
     color: var(--color-gold);
@@ -98,6 +123,13 @@ img {
     transition: all var(--transition);
     white-space: nowrap;
     text-align: center;
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
 }
 
 .btn--gold {
@@ -143,6 +175,13 @@ img {
     font-size: 17px;
 }
 
+@media (max-width: 480px) {
+    .btn--large {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+}
+
 .btn--full {
     width: 100%;
 }
@@ -156,6 +195,18 @@ img {
     font-size: 22px;
     color: var(--color-primary);
     transition: opacity var(--transition);
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 18px;
+        gap: 8px;
+    }
+
+    .logo__icon {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 .logo:hover {
@@ -184,6 +235,12 @@ img {
     align-items: center;
     justify-content: space-between;
     height: 70px;
+}
+
+@media (max-width: 480px) {
+    .header__inner {
+        height: 60px;
+    }
 }
 
 .nav {
@@ -283,6 +340,19 @@ img {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 90px 0 48px;
+    }
+}
+
 .hero__bg-circle {
     position: absolute;
     border-radius: 50%;
@@ -347,6 +417,17 @@ img {
     gap: 16px;
     flex-wrap: wrap;
     margin-bottom: 16px;
+}
+
+@media (max-width: 480px) {
+    .hero__buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero__buttons .btn {
+        width: 100%;
+    }
 }
 
 .hero__microcopy {
@@ -571,6 +652,25 @@ img {
     gap: 28px;
 }
 
+@media (max-width: 1024px) {
+    .solution-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .solution-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-card {
+        padding: 28px 20px;
+    }
+}
+
 .solution-card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -766,6 +866,22 @@ img {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .price-tiers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .price-tiers {
+        grid-template-columns: 1fr;
+    }
+
+    .price-tier {
+        padding: 24px 20px;
+    }
 }
 
 .price-tier {
@@ -1020,6 +1136,13 @@ img {
     text-align: right;
 }
 
+@media (max-width: 768px) {
+    .bar-chart__label {
+        flex: 0 0 130px;
+        font-size: 12px;
+    }
+}
+
 .bar-chart__bar-wrap {
     flex: 1;
     display: flex;
@@ -1066,6 +1189,12 @@ img {
     color: var(--color-primary);
     line-height: 1;
     margin-bottom: 8px;
+}
+
+@media (max-width: 480px) {
+    .validation__big-number {
+        font-size: 48px;
+    }
 }
 
 .validation__desc {
@@ -1486,6 +1615,8 @@ img {
         box-shadow: var(--shadow-md);
         transform: translateY(-150%);
         transition: transform var(--transition);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav.open {
@@ -1567,13 +1698,38 @@ img {
     }
 }
 
+@media (max-width: 768px) {
+    .nav {
+        top: 60px;
+        max-height: calc(100vh - 60px);
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section__header {
+        margin-bottom: 36px;
+    }
+
+    .problem-card,
+    .profile-card {
+        padding: 28px 24px;
+    }
+
+    .demo-interactive__panel,
+    .demo-interactive__result {
+        padding: 24px 20px;
+    }
+}
+
 @media (max-width: 600px) {
     .section {
-        padding: 56px 0;
+        padding: 48px 0;
     }
 
     .hero {
-        padding: 100px 0 60px;
+        padding: 90px 0 48px;
     }
 
     .price-tiers {
@@ -1591,6 +1747,129 @@ img {
 
     .validation__big-number {
         font-size: 56px;
+    }
+
+    .demo-options {
+        gap: 6px;
+    }
+
+    .demo-option {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__inner {
+        height: 60px;
+    }
+
+    .nav {
+        top: 60px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .section__title {
+        font-size: clamp(24px, 6vw, 28px);
+    }
+
+    .hero {
+        padding: 80px 0 40px;
+    }
+
+    .hero__tag {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .hero__buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero__buttons .btn {
+        width: 100%;
+    }
+
+    .problem-card,
+    .profile-card {
+        padding: 24px 20px;
+    }
+
+    .interest-form {
+        padding: 20px 16px;
+    }
+
+    .form-input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .faq-item__question {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+
+    .faq-item__answer p {
+        padding: 0 20px 16px;
+        font-size: 13px;
+    }
+
+    .final-cta {
+        padding: 56px 0;
+    }
+
+    .footer {
+        padding: 32px 0 24px;
+    }
+
+    .footer__nav {
+        gap: 12px;
+    }
+
+    .footer__link {
+        font-size: 13px;
+    }
+
+    .business-model__card {
+        padding: 20px 16px;
+    }
+
+    .business-model__amount {
+        font-size: 32px;
+    }
+
+    .business-model__card-amount {
+        font-size: 28px;
+    }
+
+    .validation__detail {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .section {
+        padding: 32px 0;
+    }
+
+    .hero {
+        padding: 70px 0 32px;
+    }
+
+    .demo-card__body {
+        padding: 20px 16px;
+    }
+
+    .demo-card__price {
+        font-size: 22px;
+    }
+
+    .price-tier__amount {
+        font-size: 24px;
     }
 }
 

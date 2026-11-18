@@ -56,13 +56,14 @@ html {
 body {
     font-family: var(--font-family);
     color: var(--color-text);
-    background: #ECEFEA;
+    background: var(--color-white);
     line-height: 1.5;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: stretch;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -81,12 +82,13 @@ input, textarea {
 }
 
 /* ==============================
-   APP SHELL (phone frame)
+   APP SHELL (tela cheia)
    ============================== */
 .app-shell {
     width: 100%;
-    max-width: 430px;
+    max-width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     background: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -95,16 +97,27 @@ input, textarea {
     box-shadow: var(--shadow-lg);
 }
 
-@media (min-width: 480px) {
+/* Em telas grandes, centraliza o app com largura máxima de um tablet/mobile ampliado */
+@media (min-width: 481px) {
     body {
         align-items: center;
-        padding: 20px;
+        padding: 0;
+        background: var(--color-white);
     }
     .app-shell {
-        min-height: 880px;
-        max-height: 900px;
-        border-radius: 32px;
+        max-width: 540px;
+        min-height: 100vh;
+        min-height: 100dvh;
+        max-height: none;
+        border-radius: 0;
         overflow: hidden;
+    }
+}
+
+/* Em telas muito grandes, usa largura maior para melhor aproveitamento */
+@media (min-width: 1024px) {
+    .app-shell {
+        max-width: 640px;
     }
 }
 
@@ -115,9 +128,11 @@ input, textarea {
     display: flex;
     background: var(--color-primary);
     height: var(--topbar-h);
+    height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
     position: relative;
     z-index: 10;
     flex-shrink: 0;
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 .top-tabbar__btn {
@@ -222,6 +237,7 @@ input, textarea {
     flex: 1;
     overflow: hidden;
     position: relative;
+    min-height: 0;
 }
 
 .mode-screens {
@@ -1186,6 +1202,7 @@ input, textarea {
    ============================== */
 .bottom-nav {
     height: var(--bottomnav-h);
+    height: calc(var(--bottomnav-h) + env(safe-area-inset-bottom, 0px));
     background: var(--color-white);
     border-top: 1px solid var(--color-border);
     flex-shrink: 0;
@@ -1246,7 +1263,7 @@ input, textarea {
     display: none !important;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 481px) {
     .modal-overlay {
         align-items: center;
     }
@@ -1259,7 +1276,7 @@ input, textarea {
 
 .modal {
     width: 100%;
-    max-width: 430px;
+    max-width: 540px;
     max-height: 85vh;
     background: var(--color-white);
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
@@ -1269,10 +1286,16 @@ input, textarea {
     overflow: hidden;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 481px) {
     .modal {
         border-radius: var(--radius-xl);
         max-height: 80vh;
+    }
+}
+
+@media (min-width: 1024px) {
+    .modal {
+        max-width: 640px;
     }
 }
 
@@ -1607,7 +1630,7 @@ input, textarea {
 }
 
 .modal--chat {
-    max-width: 430px;
+    max-width: 540px;
     height: 85vh;
     max-height: 85vh;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
@@ -1615,10 +1638,17 @@ input, textarea {
     flex-direction: column;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 481px) {
     .modal--chat {
-        height: 700px;
+        height: 90vh;
+        max-height: 90vh;
         border-radius: var(--radius-xl);
+    }
+}
+
+@media (min-width: 1024px) {
+    .modal--chat {
+        max-width: 640px;
     }
 }
 
@@ -1895,7 +1925,7 @@ input, textarea {
    ============================== */
 .toast {
     position: fixed;
-    bottom: 80px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     background: var(--color-primary);
