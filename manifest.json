@@ -1,0 +1,60 @@
+{
+  "name": "Precify — Marketplace inteligente de serviços digitais",
+  "short_name": "Precify",
+  "description": "Conecte clientes e freelancers com sugestões de preço baseadas na complexidade da tarefa. Sua tarefa. O preço certo.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#193F34",
+  "theme_color": "#193F34",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Como funciona",
+      "short_name": "Como funciona",
+      "url": "./index.html#solution",
+      "description": "Veja como a Precify sugere preços"
+    },
+    {
+      "name": "Experimente a demo",
+      "short_name": "Demo",
+      "url": "./index.html#demo",
+      "description": "Teste a sugestão de preço"
+    },
+    {
+      "name": "Cadastrar interesse",
+      "short_name": "Cadastrar",
+      "url": "./index.html#interest-form",
+      "description": "Entre na lista de interesse"
+    }
+  ]
+}

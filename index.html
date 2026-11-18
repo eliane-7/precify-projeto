@@ -6,6 +6,15 @@
     <meta name="description" content="Conheça a Precify, uma proposta de marketplace que conecta clientes e freelancers e utiliza a complexidade das tarefas como referência para sugerir preços de serviços digitais." />
     <meta name="keywords" content="Precify, marketplace, serviços digitais, freelancers, precificação inteligente, IA" />
     <meta name="author" content="Precify" />
+    <meta name="theme-color" content="#193F34" />
+    <meta name="application-name" content="Precify" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Precify" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Precify | Marketplace inteligente de serviços digitais" />
@@ -18,6 +27,9 @@
     <!-- Favicon (inline SVG) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='32' fill='%23D9A441'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23D9A441'/%3E%3C/svg%3E" />
 
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -25,6 +37,28 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+<!-- ============================== -->
+<!-- PWA INSTALL BANNER             -->
+<!-- ============================== -->
+<div id="pwa-install-banner" class="pwa-install-banner" hidden>
+    <div class="pwa-install-banner__content">
+        <svg class="pwa-install-banner__icon" width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="#D9A441"/>
+            <circle cx="50" cy="50" r="33" fill="#193F34"/>
+            <circle cx="50" cy="50" r="22" fill="#D9A441"/>
+            <circle cx="50" cy="50" r="10" fill="#193F34"/>
+        </svg>
+        <div class="pwa-install-banner__text">
+            <strong>Instale o Precify</strong>
+            <span>Acesse mais rapido pelo seu celular ou desktop</span>
+        </div>
+    </div>
+    <div class="pwa-install-banner__actions">
+        <button id="pwa-install-btn" class="btn btn--gold btn--small">Instalar</button>
+        <button id="pwa-install-dismiss" class="pwa-install-banner__dismiss" aria-label="Fechar">&times;</button>
+    </div>
+</div>
 
 <!-- ============================== -->
 <!-- HEADER / NAVIGATION            -->
@@ -49,6 +83,7 @@
             <a href="#precify-score" class="nav__link">Precify Score</a>
             <a href="#avaliacoes" class="nav__link">Avaliações</a>
             <a href="#faq" class="nav__link">Dúvidas frequentes</a>
+            <a href="demo.html" class="nav__link" style="color: var(--color-gold); font-weight: 700;">Demo do App</a>
             <a href="#interest-form" class="btn btn--gold btn--small">Quero conhecer a Precify</a>
         </nav>
 
@@ -75,6 +110,7 @@
 
             <div class="hero__buttons">
                 <a href="#interest-form" class="btn btn--gold">Quero experimentar a Precify</a>
+                <a href="demo.html" class="btn btn--outline">Ver demo do app</a>
                 <a href="#solution" class="btn btn--outline">Descobrir como funciona</a>
             </div>
 
@@ -733,6 +769,7 @@
             <a href="#profiles" class="footer__link">Para clientes</a>
             <a href="#profiles" class="footer__link">Para freelancers</a>
             <a href="#faq" class="footer__link">Dúvidas frequentes</a>
+            <a href="demo.html" class="footer__link" style="color: var(--color-gold);">Demo do app</a>
         </nav>
 
         <div class="footer__info">
@@ -744,5 +781,20 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- PWA Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then((reg) => {
+                console.log('[PWA] Service Worker registrado com sucesso. Escopo:', reg.scope);
+            })
+            .catch((err) => {
+                console.warn('[PWA] Falha ao registrar Service Worker:', err);
+            });
+    });
+}
+</script>
 </body>
 </html>

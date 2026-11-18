@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#193F34" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Demonstração do app Precify — fluxo completo de contratação e prestação de serviços digitais." />
+    <title>Precify App — Demonstração</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='32' fill='%23D9A441'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23193F34'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23D9A441'/%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="demo-styles.css" />
+</head>
+<body>
+
+<!-- ============================== -->
+<!-- APP CONTAINER (phone frame)    -->
+<!-- ============================== -->
+<div class="app-shell">
+
+    <!-- ============================== -->
+    <!-- TOP TABBAR: Contratante / Contratado -->
+    <!-- ============================== -->
+    <div class="top-tabbar">
+        <button class="top-tabbar__btn active" data-mode="client" id="mode-client-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Contratante</span>
+        </button>
+        <button class="top-tabbar__btn" data-mode="freelancer" id="mode-freelancer-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+            <span>Contratado</span>
+        </button>
+        <div class="top-tabbar__indicator" id="tabbar-indicator"></div>
+    </div>
+
+    <!-- App header with logo + user avatar -->
+    <div class="app-header">
+        <a href="index.html" class="app-header__back" aria-label="Voltar ao site">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+        <div class="app-header__logo">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="46" fill="#D9A441"/>
+                <circle cx="50" cy="50" r="33" fill="#193F34"/>
+                <circle cx="50" cy="50" r="22" fill="#D9A441"/>
+                <circle cx="50" cy="50" r="10" fill="#193F34"/>
+            </svg>
+            <span>Precify</span>
+        </div>
+        <div class="app-header__user" id="header-user-avatar">
+            <span id="user-avatar-text">E</span>
+        </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- SCREENS CONTAINER              -->
+    <!-- ============================== -->
+    <div class="screens-wrapper" id="screens-wrapper">
+
+        <!-- ============================== -->
+        <!-- CONTRATANTE SCREENS            -->
+        <!-- ============================== -->
+        <div class="mode-screens mode-screens--client active" id="client-screens">
+
+            <!-- HOME / EXPLORAR -->
+            <div class="screen screen--home active" data-screen="home">
+                <div class="screen__scroll">
+                    <div class="home-hero">
+                        <div class="home-hero__greeting">
+                            <h2>Ola, Eliane!</h2>
+                            <p>O que voce precisa hoje?</p>
+                        </div>
+                        <div class="home-hero__balance">
+                            <span class="balance-label">Carteira</span>
+                            <span class="balance-value">R$ 120,00</span>
+                        </div>
+                    </div>
+
+                    <div class="search-bar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        <input type="text" placeholder="Buscar servicos ou profissionais..." id="client-search" />
+                    </div>
+
+                    <div class="section-label">Categorias</div>
+                    <div class="categories-scroll" id="client-categories">
+                        <button class="category-chip active" data-cat="all">Todos</button>
+                        <button class="category-chip" data-cat="design">Design</button>
+                        <button class="category-chip" data-cat="video">Video</button>
+                        <button class="category-chip" data-cat="writing">Redacao</button>
+                        <button class="category-chip" data-cat="programming">Programacao</button>
+                        <button class="category-chip" data-cat="marketing">Marketing</button>
+                    </div>
+
+                    <div class="section-label">Sugestao de preco</div>
+                    <div class="price-suggest-card">
+                        <div class="price-suggest-card__input">
+                            <label>Descreva seu servico</label>
+                            <textarea id="price-suggest-input" placeholder="Ex: Criar uma arte para Instagram" rows="2"></textarea>
+                        </div>
+                        <button class="btn-price-suggest" id="btn-price-suggest">Analisar preco</button>
+                        <div class="price-suggest-result" id="price-suggest-result" hidden>
+                            <div class="price-suggest-result__ai">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                <span>Analise IA</span>
+                            </div>
+                            <div class="price-suggest-result__price" id="suggest-price-range">R$ 30 - R$ 50</div>
+                            <div class="price-suggest-result__complexity" id="suggest-complexity">Complexidade: Intermediaria</div>
+                        </div>
+                    </div>
+
+                    <div class="section-label">Profissionais disponiveis</div>
+                    <div class="freelancer-list" id="freelancer-list"></div>
+                </div>
+            </div>
+
+            <!-- SOLICITACOES -->
+            <div class="screen screen--requests" data-screen="requests">
+                <div class="screen__scroll">
+                    <div class="screen__title">
+                        <h2>Minhas solicitacoes</h2>
+                    </div>
+                    <div class="requests-list" id="client-requests-list"></div>
+                </div>
+            </div>
+
+            <!-- ATIVIDADES (cards interativos) -->
+            <div class="screen screen--messages" data-screen="messages">
+                <div class="screen__scroll">
+                    <div class="screen__title">
+                        <h2>Atividades</h2>
+                    </div>
+                    <div class="activity-list" id="client-activity-list"></div>
+                </div>
+            </div>
+
+            <!-- PERFIL -->
+            <div class="screen screen--profile" data-screen="profile">
+                <div class="screen__scroll">
+                    <div class="profile-header">
+                        <div class="profile-avatar profile-avatar--large">E</div>
+                        <h2>Eliane Martins</h2>
+                        <span class="profile-email">eliane@email.com</span>
+                        <div class="profile-score-badge">
+                            <span class="score-badge score-badge--silver">✦</span>
+                            <span>Prata - 45 pts</span>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <strong>3</strong>
+                            <span>Servicos contratados</span>
+                        </div>
+                        <div class="profile-stat">
+                            <strong>4,8</strong>
+                            <span>Avaliacao</span>
+                        </div>
+                        <div class="profile-stat">
+                            <strong>R$ 120</strong>
+                            <span>Carteira</span>
+                        </div>
+                    </div>
+                    <div class="profile-menu">
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            <span>Meu historico</span>
+                        </div>
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                            <span>Configuracoes</span>
+                        </div>
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                            <span>Suporte</span>
+                        </div>
+                        <div class="profile-menu__item profile-menu__item--logout">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                            <span>Sair</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================== -->
+        <!-- CONTRATADO SCREENS             -->
+        <!-- ============================== -->
+        <div class="mode-screens mode-screens--freelancer" id="freelancer-screens">
+
+            <!-- OPORTUNIDADES -->
+            <div class="screen screen--opportunities active" data-screen="opportunities">
+                <div class="screen__scroll">
+                    <div class="home-hero">
+                        <div class="home-hero__greeting">
+                            <h2>Ola, Aline!</h2>
+                            <p>Novas oportunidades para voce</p>
+                        </div>
+                        <div class="home-hero__balance">
+                            <span class="balance-label">Ganhos</span>
+                            <span class="balance-value">R$ 340,00</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="mini-stat">
+                            <strong>5</strong>
+                            <span>Disponiveis</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>2</strong>
+                            <span>Em andamento</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>8</strong>
+                            <span>Concluidos</span>
+                        </div>
+                    </div>
+
+                    <div class="section-label">Oportunidades abertas</div>
+                    <div class="opportunity-list" id="opportunity-list"></div>
+                </div>
+            </div>
+
+            <!-- MEUS SERVICOS -->
+            <div class="screen screen--my-services" data-screen="my-services">
+                <div class="screen__scroll">
+                    <div class="screen__title">
+                        <h2>Meus servicos</h2>
+                    </div>
+                    <div class="services-tabs">
+                        <button class="services-tab active" data-status="active">Em andamento</button>
+                        <button class="services-tab" data-status="completed">Concluidos</button>
+                    </div>
+                    <div class="my-services-list" id="freelancer-services-list"></div>
+                </div>
+            </div>
+
+            <!-- ATIVIDADES (cards interativos) -->
+            <div class="screen screen--messages-freelancer" data-screen="messages-freelancer">
+                <div class="screen__scroll">
+                    <div class="screen__title">
+                        <h2>Atividades</h2>
+                    </div>
+                    <div class="activity-list" id="freelancer-activity-list"></div>
+                </div>
+            </div>
+
+            <!-- PERFIL FREELANCER -->
+            <div class="screen screen--profile-freelancer" data-screen="profile-freelancer">
+                <div class="screen__scroll">
+                    <div class="profile-header">
+                        <div class="profile-avatar profile-avatar--large profile-avatar--gold">A</div>
+                        <h2>Aline Souza</h2>
+                        <span class="profile-email">aline@email.com</span>
+                        <span class="profile-skill">Designer e Redatora</span>
+                        <div class="profile-score-badge">
+                            <span class="score-badge score-badge--gold">✦</span>
+                            <span>Ouro - 72 pts</span>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <strong>8</strong>
+                            <span>Servicos concluidos</span>
+                        </div>
+                        <div class="profile-stat">
+                            <strong>4,9</strong>
+                            <span>Avaliacao</span>
+                        </div>
+                        <div class="profile-stat">
+                            <strong>R$ 340</strong>
+                            <span>Ganhos</span>
+                        </div>
+                    </div>
+                    <div class="profile-skills">
+                        <div class="section-label">Habilidades</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Design grafico</span>
+                            <span class="skill-tag">Artes para redes sociais</span>
+                            <span class="skill-tag">Redacao publicitaria</span>
+                            <span class="skill-tag">Edicao de imagem</span>
+                            <span class="skill-tag">Branding</span>
+                        </div>
+                    </div>
+                    <div class="profile-menu">
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            <span>Meus ganhos</span>
+                        </div>
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                            <span>Configuracoes</span>
+                        </div>
+                        <div class="profile-menu__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                            <span>Suporte</span>
+                        </div>
+                        <div class="profile-menu__item profile-menu__item--logout">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                            <span>Sair</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- BOTTOM NAVIGATION              -->
+    <!-- ============================== -->
+    <div class="bottom-nav" id="bottom-nav">
+        <!-- Client bottom nav -->
+        <div class="bottom-nav__mode bottom-nav__mode--client active" id="client-nav">
+            <button class="nav-item active" data-screen="home">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+                <span>Explorar</span>
+            </button>
+            <button class="nav-item" data-screen="requests">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                <span>Solicitacoes</span>
+            </button>
+            <button class="nav-item" data-screen="messages">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span>Atividades</span>
+            </button>
+            <button class="nav-item" data-screen="profile">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 00-16 0"/></svg>
+                <span>Perfil</span>
+            </button>
+        </div>
+        <!-- Freelancer bottom nav -->
+        <div class="bottom-nav__mode bottom-nav__mode--freelancer" id="freelancer-nav">
+            <button class="nav-item active" data-screen="opportunities">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span>Oportunidades</span>
+            </button>
+            <button class="nav-item" data-screen="my-services">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                <span>Meus servicos</span>
+            </button>
+            <button class="nav-item" data-screen="messages-freelancer">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span>Atividades</span>
+            </button>
+            <button class="nav-item" data-screen="profile-freelancer">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 00-16 0"/></svg>
+                <span>Perfil</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================== -->
+<!-- MODAL: Freelancer detail       -->
+<!-- ============================== -->
+<div class="modal-overlay" id="modal-freelancer" hidden>
+    <div class="modal">
+        <div class="modal__header">
+            <button class="modal__close" id="modal-freelancer-close">&times;</button>
+        </div>
+        <div class="modal__body" id="modal-freelancer-body"></div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- MODAL: Opportunity detail      -->
+<!-- ============================== -->
+<div class="modal-overlay" id="modal-opportunity" hidden>
+    <div class="modal">
+        <div class="modal__header">
+            <button class="modal__close" id="modal-opportunity-close">&times;</button>
+        </div>
+        <div class="modal__body" id="modal-opportunity-body"></div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- MODAL: Detail card interativo  -->
+<!-- ============================== -->
+<div class="modal-overlay" id="modal-detail" hidden>
+    <div class="modal">
+        <div class="modal__header">
+            <button class="modal__close" id="modal-detail-close">&times;</button>
+        </div>
+        <div class="modal__body" id="modal-detail-body"></div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- MODAL: Contratacao flow        -->
+<!-- ============================== -->
+<div class="modal-overlay" id="modal-hire" hidden>
+    <div class="modal">
+        <div class="modal__header">
+            <button class="modal__close" id="modal-hire-close">&times;</button>
+        </div>
+        <div class="modal__body" id="modal-hire-body"></div>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- TOAST notification             -->
+<!-- ============================== -->
+<div class="toast" id="toast" hidden></div>
+
+<script src="demo-script.js"></script>
+
+<!-- PWA Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('[PWA] SW registrado:', reg.scope))
+            .catch((err) => console.warn('[PWA] SW falhou:', err));
+    });
+}
+</script>
+</body>
+</html>

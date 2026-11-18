@@ -288,4 +288,53 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     });
 
+    // --- PWA Install Prompt ---
+    let deferredPrompt = null;
+    const installBanner = document.getElementById('pwa-install-banner');
+    const installBtn = document.getElementById('pwa-install-btn');
+    const dismissBtn = document.getElementById('pwa-install-dismiss');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the default mini-infobar
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show the install banner if not previously dismissed
+        const dismissed = localStorage.getItem('pwa-install-dismissed');
+        if (!dismissed && installBanner) {
+            installBanner.removeAttribute('hidden');
+        }
+    });
+
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+
+            if (outcome === 'accepted') {
+                console.log('[PWA] Usuario aceitou a instalacao');
+            } else {
+                console.log('[PWA] Usuario recusou a instalacao');
+            }
+
+            deferredPrompt = null;
+            if (installBanner) installBanner.setAttribute('hidden', '');
+        });
+    }
+
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', () => {
+            if (installBanner) installBanner.setAttribute('hidden', '');
+            localStorage.setItem('pwa-install-dismissed', 'true');
+        });
+    }
+
+    // Listen for appinstalled event
+    window.addEventListener('appinstalled', () => {
+        console.log('[PWA] App instalado com sucesso');
+        if (installBanner) installBanner.setAttribute('hidden', '');
+    });
+
 });
